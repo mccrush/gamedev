@@ -20,7 +20,7 @@
       ></div>
     </div>
     <div class="row pt-2 pb-2">
-      <div class="col-6">
+      <div class="col-6 d-flex align-items-center">
         <button class="btn btn-light shadow-sm fw-bold" @click="setArrayStart">
           СТАРТ
         </button>
@@ -33,14 +33,17 @@
         <button class="btn btn-light shadow-sm fw-bold ms-2" @click="stopGame">
           СТОП
         </button>
+        <div class="d-flex align-items-center ms-2">
+          <span>Таймер с.</span>
+          <input
+            class="form-control form-control-sm mc-form-width ms-2"
+            type="number"
+            v-model="timer"
+          />
+        </div>
       </div>
-      <div class="col-6 d-flex align-items-center justify-content-end">
-        <span>Таймер с.</span>
-        <input
-          class="form-control form-control-sm w-25 ms-2"
-          type="number"
-          v-model="timer"
-        />
+      <div class="col-6 d-flex align-items-end justify-content-end">
+        <span class="text-secondary small">mccrush.ru</span>
       </div>
     </div>
   </div>
@@ -248,5 +251,9 @@ export default {
 .mc-bg-rd {
   background: url(./images/figures/rd.png) center top no-repeat;
   background-size: contain;
+}
+
+.mc-form-width {
+  width: 64px;
 }
 </style>
