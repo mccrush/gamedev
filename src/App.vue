@@ -241,15 +241,15 @@ export default {
 }
 
 .mc-bg-tr {
-  background: url(./images/figures/tr.png) center center no-repeat;
+  background: url(/images/figures/tr.png) center center no-repeat;
   background-size: contain;
 }
 .mc-bg-rc {
-  background: url(./images/figures/rc.png) center top no-repeat;
+  background: url(/images/figures/rc.png) center top no-repeat;
   background-size: contain;
 }
 .mc-bg-rd {
-  background: url(./images/figures/rd.png) center top no-repeat;
+  background: url(/images/figures/rd.png) center top no-repeat;
   background-size: contain;
 }
 
