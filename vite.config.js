@@ -6,6 +6,6 @@ export default defineConfig({
   plugins: [vue(), splitVendorChunkPlugin()],
   root: '.',
   build: {
-    outDir: 'dist_vite'
+    outDir: 'docs'
   }
 })
