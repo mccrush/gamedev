@@ -5,6 +5,7 @@ import vue from '@vitejs/plugin-vue'
 export default defineConfig({
   plugins: [vue(), splitVendorChunkPlugin()],
   root: '.',
+  base: '/gamedev/',
   build: {
     outDir: 'docs'
   }
