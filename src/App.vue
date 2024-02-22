@@ -21,7 +21,25 @@
     </div>
     <div class="row pt-2 pb-2">
       <div class="col-6 d-flex align-items-center">
-        <button class="btn btn-light shadow-sm fw-bold" @click="setArrayStart">
+        <button
+          class="btn btn-light shadow-sm fw-bold"
+          @click="toggleFullScreen"
+        >
+          <img
+            v-if="!fullscreen"
+            src="/images/icons/fullscreen.svg"
+            alt="fullscreen"
+          />
+          <img
+            v-else
+            src="/images/icons/fullscreen-exit.svg"
+            alt="fullscreen"
+          />
+        </button>
+        <button
+          class="btn btn-light shadow-sm fw-bold ms-2"
+          @click="setArrayStart"
+        >
           СТАРТ
         </button>
         <!-- <button
@@ -54,6 +72,7 @@ export default {
   components: {},
   data() {
     return {
+      fullscreen: false,
       timer: 3,
       startGame: false,
       mod: 'start',
@@ -101,7 +120,7 @@ export default {
           event.target.classList.add('bg-success')
 
           if (this.clickCounter === 3 && this.startGame) {
-            setTimeout(() => {
+            this.timeoutS = setTimeout(() => {
               this.setArrayStart()
             }, this.timer * 1000)
           }
@@ -153,7 +172,7 @@ export default {
         }
       }
 
-      setTimeout(() => {
+      this.timeoutE = setTimeout(() => {
         this.setArrayEnd()
       }, this.timer * 1000)
 
@@ -201,6 +220,7 @@ export default {
       return Math.floor(Math.random() * (max + 1))
     },
     resetStartData() {
+      clearTimeout(this.timeoutS)
       this.mod = 'start'
       this.arrayStart = [
         { fg: '', cn: '' },
@@ -215,6 +235,7 @@ export default {
       this.numbersStartTemp = []
     },
     resetEndData() {
+      clearTimeout(this.timeoutE)
       this.mod = 'end'
       this.clickCounter = 0
       this.arrayEnd = [
@@ -228,6 +249,15 @@ export default {
       this.arrayEndTemp = []
       this.figuresEndTemp = []
       this.numbersEndTemp = []
+    },
+    toggleFullScreen() {
+      if (!document.fullscreenElement) {
+        document.documentElement.requestFullscreen()
+        this.fullscreen = true
+      } else if (document.exitFullscreen) {
+        document.exitFullscreen()
+        this.fullscreen = false
+      }
     }
   }
 }
